@@ -17,9 +17,21 @@
             app:popUpToInclusive="true"
             />
     </fragment>
+
     <fragment
         android:id="@+id/loginFragment"
         android:name="com.lucasfagundes.ioasysbooks.LoginFragment"
         android:label="fragment_login"
-        tools:layout="@layout/fragment_login" />
+        tools:layout="@layout/fragment_login" >
+        <action
+            android:id="@+id/action_loginFragment_to_searchBooksFragment"
+            app:destination="@id/searchBooksFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/searchBooksFragment"
+        android:name="com.lucasfagundes.ioasysbooks.SearchBooksFragment"
+        android:label="fragment_search_books"
+        tools:layout="@layout/fragment_search_books" />
+
 </navigation>

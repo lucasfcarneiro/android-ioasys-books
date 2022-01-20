@@ -74,12 +74,13 @@
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.button.MaterialButton
+        android:id="@+id/loginButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="16dp"
         android:backgroundTint="@color/white"
         android:text="@string/entrar"
-        android:textColor="@color/light_pink"
+        android:textColor="@color/dark_pink"
         app:cornerRadius="44dp"
         app:layout_constraintBottom_toBottomOf="@id/textInputPassword"
         app:layout_constraintEnd_toEndOf="@id/textInputPassword"
