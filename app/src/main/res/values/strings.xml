@@ -7,4 +7,5 @@
     <string name="password">Senha</string>
     <string name="entrar">Entrar</string>
     <string name="wrong_mail_password">Email e/ou senha incorretos</string>
+    <string name="search">Pesquisar</string>
 </resources>
