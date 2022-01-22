@@ -22,10 +22,10 @@ class CustomSearchInput @JvmOverloads constructor(
         LayoutInflater.from(context).inflate(R.layout.custom_search_input, this, true)
 
     private val input: TextInputEditText by lazy {
-        binding.customInput
+        view.findViewById(R.id.customInput)
     }
 
-    var textChangeList:(input:String) -> Unit
+    var textChangeListener:(input:String) -> Unit ={}
 
     init {
         setLayout(attrs)
@@ -47,6 +47,7 @@ class CustomSearchInput @JvmOverloads constructor(
     private fun configureInputSearch(){
         input.addTextChangedListener { input ->
             configureInputBackground(input.isNullOrEmpty())
+            textChangeListener.invoke(input.toString())
         }
     }
 
@@ -54,7 +55,8 @@ class CustomSearchInput @JvmOverloads constructor(
         if(empty){
             input.backgroundTintList = null
         }else{
-            input.backgroundTintList = ContextCompat.getColorStateList(context,android.R.color.white)
+            input.backgroundTintList =
+                ContextCompat.getColorStateList(context,android.R.color.white)
         }
     }
 

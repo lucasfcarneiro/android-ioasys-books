@@ -6,9 +6,9 @@
     android:layout_height="wrap_content">
 
     <com.google.android.material.textfield.TextInputEditText
+        android:id="@+id/customInput"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:id="@+id/customInput"
         android:background="@drawable/bg_gray_with_corners"
         android:drawableStart="@drawable/ic_search_icon"
         android:drawablePadding="16dp"
@@ -20,6 +20,5 @@
         app:layout_constraintTop_toTopOf="parent"
         tools:ignore="HardcodedText"
         tools:text="Pesquisar" />
-
 
 </androidx.constraintlayout.widget.ConstraintLayout>
