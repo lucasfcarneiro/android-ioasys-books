@@ -5,10 +5,10 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/img_background_login"
-    tools:context=".LoginFragment">
+    tools:context=".fragments.LoginFragment">
 
     <androidx.appcompat.widget.AppCompatImageView
-        android:id="@+id/imgIoasysLogo"
+        android:id="@+id/IoasysImageView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="20dp"
@@ -25,7 +25,7 @@
         android:text="@string/books"
         android:textColor="@color/white"
         android:textSize="28sp"
-        app:layout_constraintStart_toEndOf="@id/imgIoasysLogo"
+        app:layout_constraintStart_toEndOf="@id/IoasysImageView"
         app:layout_constraintTop_toTopOf="parent" />
 
     <com.google.android.material.textfield.TextInputLayout
@@ -43,7 +43,7 @@
         app:boxStrokeWidthFocused="0dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/imgIoasysLogo">
+        app:layout_constraintTop_toBottomOf="@id/IoasysImageView">
 
         <com.google.android.material.textfield.TextInputEditText
             android:layout_width="match_parent"

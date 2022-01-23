@@ -1,4 +1,4 @@
-package com.lucasfagundes.ioasysbooks
+package com.lucasfagundes.ioasysbooks.fragments
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -25,7 +25,7 @@ class LoginFragment : Fragment() {
 
       binding.loginButton.setOnClickListener{
           findNavController().navigate(
-              LoginFragmentDirections.actionLoginFragmentToSearchBooksFragment()
+              com.lucasfagundes.ioasysbooks.fragments.LoginFragmentDirections.actionLoginFragmentToSearchBooksFragment()
           )
       }
 
