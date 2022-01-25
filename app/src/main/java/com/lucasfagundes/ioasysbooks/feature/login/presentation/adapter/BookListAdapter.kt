@@ -1,4 +1,4 @@
-package com.lucasfagundes.ioasysbooks.adapter
+package com.lucasfagundes.ioasysbooks.feature.login.presentation.adapter
 
 import android.view.LayoutInflater
 import android.view.View
@@ -8,9 +8,7 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.lucasfagundes.ioasysbooks.R
-import com.lucasfagundes.ioasysbooks.model.Book
-
-//lateinit var binding:FragmentSearchBooksBinding
+import com.lucasfagundes.ioasysbooks.feature.login.model.Book
 
 class BookListAdapter : ListAdapter<Book, BookListAdapter.BookListViewHolder>(DIFF_CALLBACK){
 

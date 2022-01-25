@@ -1,4 +1,4 @@
-package com.lucasfagundes.ioasysbooks.fragments
+package com.lucasfagundes.ioasysbooks.base_app
 
 import android.os.Bundle
 import android.os.Handler
@@ -26,7 +26,7 @@ class SplashFragment : Fragment() {
             .postDelayed(
                 {
                     findNavController().navigate(
-                        com.lucasfagundes.ioasysbooks.fragments.SplashFragmentDirections.actionSplashFragmentToLoginFragment()
+                        SplashFragmentDirections.actionSplashFragmentToLoginFragment()
                     )
                 }, 1000
             )

@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/splashFragment"
-        android:name="com.lucasfagundes.ioasysbooks.fragments.SplashFragment"
+        android:name="com.lucasfagundes.ioasysbooks.base_app.SplashFragment"
         android:label="fragment_splash"
         tools:layout="@layout/fragment_splash" >
         <action
@@ -20,17 +20,16 @@
 
     <fragment
         android:id="@+id/loginFragment"
-        android:name="com.lucasfagundes.ioasysbooks.fragments.LoginFragment"
+        android:name="com.lucasfagundes.ioasysbooks.feature.login.presentation.LoginFragment"
         android:label="fragment_login"
         tools:layout="@layout/fragment_login" >
         <action
             android:id="@+id/action_loginFragment_to_searchBooksFragment"
             app:destination="@id/searchBooksFragment" />
     </fragment>
-
     <fragment
         android:id="@+id/searchBooksFragment"
-        android:name="com.lucasfagundes.ioasysbooks.fragments.SearchBooksFragment"
+        android:name="com.lucasfagundes.ioasysbooks.SearchBooksFragment"
         android:label="fragment_search_books"
         tools:layout="@layout/fragment_search_books" />
 

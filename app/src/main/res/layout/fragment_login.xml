@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/img_background_login"
-    tools:context=".fragments.LoginFragment">
+    tools:context=".feature.login.presentation.LoginFragment">
 
     <androidx.appcompat.widget.AppCompatImageView
         android:id="@+id/IoasysImageView"
