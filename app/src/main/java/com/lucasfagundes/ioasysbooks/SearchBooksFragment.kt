@@ -5,15 +5,17 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
 import com.lucasfagundes.ioasysbooks.feature.login.presentation.adapter.BookListAdapter
 import com.lucasfagundes.ioasysbooks.databinding.FragmentSearchBooksBinding
 import com.lucasfagundes.ioasysbooks.feature.login.model.Book
+import com.lucasfagundes.ioasysbooks.feature.login.presentation.adapter.BookClickListener
 
 private var _binding: FragmentSearchBooksBinding? = null
 private val binding : FragmentSearchBooksBinding get() = _binding!!
 
-class SearchBooksFragment : Fragment() {
+class SearchBooksFragment : Fragment(), BookClickListener {
 
     private lateinit var bookListAdapter: BookListAdapter
 
@@ -31,9 +33,18 @@ class SearchBooksFragment : Fragment() {
     }
 
     private fun setBookList(){
-        bookListAdapter = BookListAdapter()
+        bookListAdapter = BookListAdapter(this)
         binding.booksListRecyclerView.adapter = bookListAdapter
 
         bookListAdapter.submitList(Book.getMockList())
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        _binding = null
+    }
+
+    override fun onBookClickListener(book: Book) {
+        Toast.makeText(requireActivity(), book.id.toString(),Toast.LENGTH_SHORT).show()
     }
 }

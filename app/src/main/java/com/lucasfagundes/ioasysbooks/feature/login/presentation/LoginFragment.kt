@@ -37,4 +37,11 @@ class LoginFragment : Fragment() {
                 LoginFragmentDirections.actionLoginFragmentToSearchBooksFragment())
         }
     }
+
+
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
+    }
 }
