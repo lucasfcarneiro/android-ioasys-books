@@ -6,7 +6,11 @@ data class Book(
     val author: String = "Lucas Fagundes",
     val pages: String = "150 paginas",
     val publisher: String = "Sao Paulo Ed",
-    val date: String = "02/10/1995",
+    val publicationDate: String = "02/10/1995",
+    val isbn10: String = "54621616",
+    val isbn13 : String = "874965196",
+    val language : String = "Ingles",
+    val review : String = "Mussum Ipsum, cacilds vidis litro abertis. Manduma pindureta quium dia nois paga.Sapien in monti palavris qui num significa nadis i pareci latim.Quem num gosta di mé, boa gentis num é.Quem manda na minha terra sou euzis!"
 ){
     companion object{
         fun getMockList() = listOf(
@@ -31,8 +35,6 @@ data class Book(
                 title = "qweqweqwe"
             )
         )
-
-
     }
 }
 

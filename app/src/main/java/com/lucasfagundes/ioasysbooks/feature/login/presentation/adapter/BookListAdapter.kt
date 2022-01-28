@@ -40,7 +40,7 @@ class BookListAdapter(private val onBookClickListener: BookClickListener) :
                 bookAuthorTextView.text = book.author
                 bookPagesTextView.text = book.pages
                 bookPublisherTextView.text = book.publisher
-                bookPublicationDateTextView.text = book.date
+                bookPublicationDateTextView.text = book.publicationDate
 
                 root.setOnClickListener {
                     onBookClickListener.onBookClickListener(book)
