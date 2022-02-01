@@ -69,7 +69,7 @@ class BookDetailsBottomSheet : BottomSheetDialogFragment() {
     }
 
     companion object{
-        fun newInstance(book:Book? = null): BookDetailsBottomSheet{
+        fun newInstance(book: Book? = null): BookDetailsBottomSheet{
             return BookDetailsBottomSheet().apply {
                 this.book = book
             }

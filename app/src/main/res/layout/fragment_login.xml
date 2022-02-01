@@ -29,35 +29,36 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/textInputMail"
+        android:id="@+id/mailTextLayout"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:layout_marginTop="100dp"
-        app:hintTextColor="@color/white"
         android:layout_marginEnd="16dp"
         android:hint="@string/mail"
         android:textColorHint="@color/white"
         app:boxStrokeColor="@color/white"
         app:boxStrokeWidth="0dp"
         app:boxStrokeWidthFocused="0dp"
+        app:hintTextColor="@color/white"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/IoasysImageView">
 
         <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/mailTextInput"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:background="@drawable/bg_input"
+            android:singleLine="true"
             android:textColor="@color/white" />
     </com.google.android.material.textfield.TextInputLayout>
 
 
     <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/textInputPassword"
+        android:id="@+id/passwordTextLayout"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        app:hintTextColor="@color/white"
         android:layout_marginStart="16dp"
         android:layout_marginTop="16dp"
         android:layout_marginEnd="16dp"
@@ -67,15 +68,18 @@
         app:boxStrokeColor="@color/white"
         app:boxStrokeWidth="0dp"
         app:boxStrokeWidthFocused="0dp"
+        app:hintTextColor="@color/white"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/textInputMail">
+        app:layout_constraintTop_toBottomOf="@id/mailTextLayout">
 
         <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/passwordTextInput"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:background="@android:color/transparent"
             android:inputType="textPassword"
+            android:singleLine="true"
             android:textColor="@color/white" />
     </com.google.android.material.textfield.TextInputLayout>
 
@@ -88,11 +92,12 @@
         android:text="@string/entrar"
         android:textColor="@color/dark_pink"
         app:cornerRadius="44dp"
-        app:layout_constraintBottom_toBottomOf="@id/textInputPassword"
-        app:layout_constraintEnd_toEndOf="@id/textInputPassword"
-        app:layout_constraintTop_toTopOf="@id/textInputPassword" />
+        app:layout_constraintBottom_toBottomOf="@id/passwordTextLayout"
+        app:layout_constraintEnd_toEndOf="@id/passwordTextLayout"
+        app:layout_constraintTop_toTopOf="@id/passwordTextLayout" />
 
     <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/errorTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
@@ -100,8 +105,20 @@
         android:text="@string/wrong_mail_password"
         android:textColor="@color/white"
         android:textSize="14sp"
+        android:visibility="gone"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/textInputPassword" />
+        app:layout_constraintTop_toBottomOf="@id/passwordTextLayout" />
+
+    <ProgressBar
+        android:id="@+id/progressDialod"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:indeterminateTint="@color/white"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
