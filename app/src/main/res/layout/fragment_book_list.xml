@@ -5,10 +5,10 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/img_background_books"
-    tools:context=".SearchBooksFragment">
+    tools:context=".feature.book.presentation.SearchBooksFragment">
 
     <androidx.appcompat.widget.AppCompatImageView
-        android:id="@+id/IoasysImageView"
+        android:id="@+id/ioasysImageView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
@@ -18,7 +18,7 @@
         app:srcCompat="@drawable/ioasys_black_logo" />
 
     <androidx.appcompat.widget.AppCompatTextView
-        android:id="@+id/BooksTextView"
+        android:id="@+id/booksTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
@@ -26,9 +26,9 @@
         android:textAlignment="center"
         android:textColor="@color/black"
         android:textSize="28sp"
-        app:layout_constraintBottom_toBottomOf="@id/IoasysImageView"
-        app:layout_constraintStart_toEndOf="@+id/IoasysImageView"
-        app:layout_constraintTop_toTopOf="@id/IoasysImageView" />
+        app:layout_constraintBottom_toBottomOf="@id/ioasysImageView"
+        app:layout_constraintStart_toEndOf="@+id/ioasysImageView"
+        app:layout_constraintTop_toTopOf="@id/ioasysImageView" />
 
     <androidx.appcompat.widget.AppCompatImageButton
         android:id="@+id/logoutImageButton"
@@ -37,9 +37,9 @@
         android:layout_marginEnd="16dp"
         android:background="@drawable/ic_log_out"
         android:src="@drawable/ic_log_out"
-        app:layout_constraintBottom_toBottomOf="@id/BooksTextView"
+        app:layout_constraintBottom_toBottomOf="@id/booksTextView"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="@id/BooksTextView" />
+        app:layout_constraintTop_toTopOf="@id/booksTextView" />
 
     <com.lucasfagundes.ioasysbooks.custom_views.CustomSearchInput
         android:id="@+id/searchCustomView"
@@ -49,7 +49,7 @@
         app:customHint="Pesquisar"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/IoasysImageView" />
+        app:layout_constraintTop_toBottomOf="@id/ioasysImageView" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/booksListRecyclerView"
@@ -61,8 +61,23 @@
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/searchCustomView"
+        app:layout_constraintVertical_bias="0.0"
         tools:listitem="@layout/item_book" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/errorTextView"
+        android:layout_width="230dp"
+        android:layout_height="wrap_content"
+        android:text="@string/no_books_found"
+        android:textSize="16sp"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@id/booksListRecyclerView"
+        app:layout_constraintVertical_bias="0.25" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

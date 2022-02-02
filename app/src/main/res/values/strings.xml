@@ -5,7 +5,7 @@
     <string name="books">Books</string>
     <string name="mail">Email</string>
     <string name="password">Senha</string>
-    <string name="entrar">Entrar</string>
+    <string name="enter">Entrar</string>
     <string name="wrong_mail_password">Email e/ou senha incorretos</string>
     <string name="search">Pesquisar</string>
     <string name="pages">Paginas</string>
@@ -17,4 +17,5 @@
     <string name="isbn_10">ISBN-10</string>
     <string name="isbn_13">ISBN-13</string>
     <string name="review_from_publisher">RESENHA DA EDITORA</string>
+    <string name="no_books_found">Não encontramos nenhum livro com esses termos</string>
 </resources>

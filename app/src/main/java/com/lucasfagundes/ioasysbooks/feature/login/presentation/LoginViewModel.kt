@@ -1,7 +1,7 @@
 package com.lucasfagundes.ioasysbooks.feature.login.presentation
 
 import androidx.lifecycle.*
-import com.lucasfagundes.ioasysbooks.feature.login.exception.LoginException
+import com.lucasfagundes.ioasysbooks.utils.LoginException
 import com.lucasfagundes.ioasysbooks.utils.*
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
@@ -27,7 +27,7 @@ class LoginViewModel : ViewModel() {
         }
     }
 
-    fun ResetViewState()
+    fun resetViewState()
     {
         _loggerUserViewState.postNeutral()
     }

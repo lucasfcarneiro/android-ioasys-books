@@ -1,4 +1,4 @@
-package com.lucasfagundes.ioasysbooks.feature.login.presentation.adapter
+package com.lucasfagundes.ioasysbooks.feature.book.adapter
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
@@ -6,7 +6,7 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.lucasfagundes.ioasysbooks.databinding.ItemBookBinding
-import com.lucasfagundes.ioasysbooks.feature.login.model.Book
+import com.lucasfagundes.ioasysbooks.feature.book.model.Book
 
 class BookListAdapter(private val onBookClickListener: BookClickListener) :
     ListAdapter<Book, BookListAdapter.BookListViewHolder>(DIFF_CALLBACK) {

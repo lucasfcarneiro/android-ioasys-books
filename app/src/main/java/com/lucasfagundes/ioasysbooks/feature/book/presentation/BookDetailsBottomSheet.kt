@@ -1,4 +1,4 @@
-package com.lucasfagundes.ioasysbooks
+package com.lucasfagundes.ioasysbooks.feature.book.presentation
 
 import android.os.Bundle
 import android.text.SpannableString
@@ -9,8 +9,9 @@ import android.view.ViewGroup
 import com.google.android.material.bottomsheet.BottomSheetBehavior
 import com.google.android.material.bottomsheet.BottomSheetDialog
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
+import com.lucasfagundes.ioasysbooks.R
 import com.lucasfagundes.ioasysbooks.databinding.FragmentBookDetailsBottomSheetBinding
-import com.lucasfagundes.ioasysbooks.feature.login.model.Book
+import com.lucasfagundes.ioasysbooks.feature.book.model.Book
 
 class BookDetailsBottomSheet : BottomSheetDialogFragment() {
 
@@ -62,14 +63,14 @@ class BookDetailsBottomSheet : BottomSheetDialogFragment() {
             resultISBN13TV.text = book?.isbn13
 
             val spannableString = SpannableString("   ${book?.review}")
-            val imageSpan = ImageSpan(requireContext(),R.drawable.ic_quotes)
+            val imageSpan = ImageSpan(requireContext(), R.drawable.ic_quotes)
             spannableString.setSpan(imageSpan,0,1, SpannableString.SPAN_INCLUSIVE_EXCLUSIVE)
             resultReviewFromPublisherTV.text = spannableString
         }
     }
 
     companion object{
-        fun newInstance(book: Book? = null): BookDetailsBottomSheet{
+        fun newInstance(book: Book? = null): BookDetailsBottomSheet {
             return BookDetailsBottomSheet().apply {
                 this.book = book
             }

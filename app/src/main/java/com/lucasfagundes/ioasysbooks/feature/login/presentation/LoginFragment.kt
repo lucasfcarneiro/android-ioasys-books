@@ -15,7 +15,6 @@ class LoginFragment : Fragment() {
 
     private var _binding: FragmentLoginBinding? = null
     private val binding : FragmentLoginBinding get() = _binding!!
-
     private val viewModel: LoginViewModel by viewModel()
 
     override fun onCreateView(
@@ -24,8 +23,6 @@ class LoginFragment : Fragment() {
     ): View  = FragmentLoginBinding.inflate(inflater,container,false).apply {
         _binding = this
     }.root
-
-
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -52,7 +49,7 @@ class LoginFragment : Fragment() {
         }
     }
 
-    fun addObserver(){
+    private fun addObserver(){
         viewModel.loggerUserViewState.observe(viewLifecycleOwner){ state->
 
             when(state){
@@ -69,13 +66,12 @@ class LoginFragment : Fragment() {
                 }
                 else -> Unit
             }
-
         }
     }
 
     override fun onDestroyView() {
         super.onDestroyView()
-        viewModel.ResetViewState()
+        viewModel.resetViewState()
         _binding = null
     }
 }

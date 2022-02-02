@@ -29,8 +29,8 @@
     </fragment>
     <fragment
         android:id="@+id/searchBooksFragment"
-        android:name="com.lucasfagundes.ioasysbooks.SearchBooksFragment"
+        android:name="com.lucasfagundes.ioasysbooks.feature.book.presentation.SearchBooksFragment"
         android:label="fragment_search_books"
-        tools:layout="@layout/fragment_search_books" />
+        tools:layout="@layout/fragment_book_list" />
 
 </navigation>
