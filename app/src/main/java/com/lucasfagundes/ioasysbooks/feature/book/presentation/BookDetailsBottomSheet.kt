@@ -11,7 +11,7 @@ import com.google.android.material.bottomsheet.BottomSheetDialog
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import com.lucasfagundes.ioasysbooks.R
 import com.lucasfagundes.ioasysbooks.databinding.FragmentBookDetailsBottomSheetBinding
-import com.lucasfagundes.ioasysbooks.feature.book.model.Book
+import com.lucasfagundes.ioasysbooks.domain.model.Book
 
 class BookDetailsBottomSheet : BottomSheetDialogFragment() {
 

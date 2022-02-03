@@ -9,7 +9,7 @@ import android.view.ViewGroup
 import com.lucasfagundes.ioasysbooks.utils.ViewState
 import com.lucasfagundes.ioasysbooks.databinding.FragmentBookListBinding
 import com.lucasfagundes.ioasysbooks.feature.book.adapter.BookListAdapter
-import com.lucasfagundes.ioasysbooks.feature.book.model.Book
+import com.lucasfagundes.ioasysbooks.domain.model.Book
 import com.lucasfagundes.ioasysbooks.feature.book.adapter.BookClickListener
 import com.lucasfagundes.ioasysbooks.utils.EmptyBookListException
 
@@ -18,6 +18,7 @@ class SearchBooksFragment : Fragment(), BookClickListener {
     private var _binding: FragmentBookListBinding? = null
     private val binding: FragmentBookListBinding get() = _binding!!
     private lateinit var bookListAdapter: BookListAdapter
+
     private val viewModel: BookListViewModel by viewModel()
 
     override fun onCreateView(

@@ -1,4 +1,4 @@
-package com.lucasfagundes.ioasysbooks.feature.book.model
+package com.lucasfagundes.ioasysbooks.domain.model
 
 data class Book(
     val id: Int,
