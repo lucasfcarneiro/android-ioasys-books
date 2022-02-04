@@ -3,7 +3,6 @@ package com.lucasfagundes.ioasysbooks.feature.login.presentation
 import androidx.lifecycle.*
 import com.lucasfagundes.ioasysbooks.domain.repositories.LoginRepository
 import com.lucasfagundes.ioasysbooks.utils.*
-import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
 
@@ -17,8 +16,8 @@ class LoginViewModel(private val loginRepository: LoginRepository) : ViewModel()
             _loggerUserViewState.postLoading()
 
             try {
-                loginRepository.login(mail, password).collect { user ->
-                    if (user.name.isNotEmpty()) {
+                loginRepository.login(mail, password).collect {
+                    if (it.name.isNotEmpty()) {
                         _loggerUserViewState.postSuccess(true)
                     } else {
                         _loggerUserViewState.postError(Exception("Algo deu errado"))
@@ -28,8 +27,8 @@ class LoginViewModel(private val loginRepository: LoginRepository) : ViewModel()
                 _loggerUserViewState.postError(error)
             }
         }
-
     }
+
         fun resetViewState() {
             _loggerUserViewState.postNeutral()
         }

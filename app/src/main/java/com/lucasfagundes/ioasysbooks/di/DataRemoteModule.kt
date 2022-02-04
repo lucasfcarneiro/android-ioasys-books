@@ -4,15 +4,27 @@ import com.lucasfagundes.ioasysbooks.data.datasource.BooksDataSource
 import com.lucasfagundes.ioasysbooks.data.datasource.LoginDatasource
 import com.lucasfagundes.ioasysbooks.data_remote.datasource.BooksDataSourceImpl
 import com.lucasfagundes.ioasysbooks.data_remote.datasource.LoginDatasourceImpl
+import com.lucasfagundes.ioasysbooks.data_remote.service.AuthService
+import com.lucasfagundes.ioasysbooks.data_remote.utils.ApiConstants
+import com.lucasfagundes.ioasysbooks.data_remote.utils.WebServiceFactory
 import org.koin.dsl.module
 
 val dataRemoteModule = module {
+
+    single<AuthService> {
+        WebServiceFactory.createdWebService(
+            okHttpClient = get(),
+            url = ApiConstants.BASE_URL
+        )
+    }
+
+    single { WebServiceFactory.providerOkhttpClient() }
 
     single<BooksDataSource> {
         BooksDataSourceImpl()
     }
 
     single<LoginDatasource> {
-        LoginDatasourceImpl()
+        LoginDatasourceImpl(get())
     }
 }

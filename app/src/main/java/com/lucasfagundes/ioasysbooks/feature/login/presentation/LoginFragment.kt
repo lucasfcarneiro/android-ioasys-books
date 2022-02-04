@@ -9,13 +9,14 @@ import androidx.core.widget.addTextChangedListener
 import androidx.navigation.fragment.findNavController
 import com.lucasfagundes.ioasysbooks.databinding.FragmentLoginBinding
 import com.lucasfagundes.ioasysbooks.utils.ViewState
+import org.koin.androidx.viewmodel.ext.android.getViewModel
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class LoginFragment : Fragment() {
 
     private var _binding: FragmentLoginBinding? = null
     private val binding : FragmentLoginBinding get() = _binding!!
-    private val viewModel: LoginViewModel by viewModel()
+    private val loginViewModel: LoginViewModel by viewModel()  //by lazy { getViewModel() }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -34,7 +35,7 @@ class LoginFragment : Fragment() {
     private fun clickEnterListener() {
         binding.loginButton.setOnClickListener {
             binding.apply {
-                viewModel.login(
+                loginViewModel.login(
                     mailTextInput.text.toString(),
                     passwordTextInput.text.toString()
                 )
@@ -50,7 +51,7 @@ class LoginFragment : Fragment() {
     }
 
     private fun addObserver(){
-        viewModel.loggerUserViewState.observe(viewLifecycleOwner){ state->
+        loginViewModel.loggerUserViewState.observe(viewLifecycleOwner){ state->
 
             when(state){
                 is ViewState.Success ->{
@@ -71,7 +72,7 @@ class LoginFragment : Fragment() {
 
     override fun onDestroyView() {
         super.onDestroyView()
-        viewModel.resetViewState()
+        loginViewModel.resetViewState()
         _binding = null
     }
 }
