@@ -8,8 +8,8 @@ import kotlinx.coroutines.launch
 
 class LoginViewModel(private val loginRepository: LoginRepository) : ViewModel() {
 
-    private val _loggerUserViewState = MutableLiveData<ViewState<Boolean>>()
-    val loggerUserViewState = _loggerUserViewState as LiveData<ViewState<Boolean>>
+    private val _loggerUserViewState = MutableLiveData<ViewState<String>>()
+    val loggerUserViewState = _loggerUserViewState as LiveData<ViewState<String>>
 
     fun login(mail: String, password: String) {
         viewModelScope.launch {
@@ -18,7 +18,7 @@ class LoginViewModel(private val loginRepository: LoginRepository) : ViewModel()
             try {
                 loginRepository.login(mail, password).collect {
                     if (it.name.isNotEmpty()) {
-                        _loggerUserViewState.postSuccess(true)
+                        _loggerUserViewState.postSuccess(it.accessToken)
                     } else {
                         _loggerUserViewState.postError(Exception("Algo deu errado"))
                     }

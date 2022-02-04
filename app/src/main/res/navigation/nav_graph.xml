@@ -26,11 +26,16 @@
         <action
             android:id="@+id/action_loginFragment_to_searchBooksFragment"
             app:destination="@id/searchBooksFragment" />
+
     </fragment>
     <fragment
         android:id="@+id/searchBooksFragment"
         android:name="com.lucasfagundes.ioasysbooks.feature.book.presentation.SearchBooksFragment"
         android:label="fragment_search_books"
-        tools:layout="@layout/fragment_book_list" />
+        tools:layout="@layout/fragment_book_list" >
+        <argument
+            android:name="accessToken"
+            app:argType="string" />
+    </fragment>
 
 </navigation>

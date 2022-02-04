@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import android.view.ViewGroup
+import androidx.navigation.fragment.navArgs
 import com.lucasfagundes.ioasysbooks.utils.ViewState
 import com.lucasfagundes.ioasysbooks.databinding.FragmentBookListBinding
 import com.lucasfagundes.ioasysbooks.feature.book.adapter.BookListAdapter
@@ -19,7 +20,9 @@ class SearchBooksFragment : Fragment(), BookClickListener {
     private val binding: FragmentBookListBinding get() = _binding!!
     private lateinit var bookListAdapter: BookListAdapter
 
-    private val viewModel: BookListViewModel by viewModel()
+    private val bookViewModel: BookListViewModel by viewModel()
+
+    private val args: SearchBooksFragmentArgs by navArgs()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -34,23 +37,22 @@ class SearchBooksFragment : Fragment(), BookClickListener {
         setBookListData()
         searchListener()
         addObserver()
-
     }
 
     private fun searchListener() {
         binding.searchCustomView.textChangeListener = { input ->
-            viewModel.search(input)
+            bookViewModel.search(input, args.accessToken)
         }
     }
 
     private fun setBookListData() {
         bookListAdapter = BookListAdapter(this)
         binding.booksListRecyclerView.adapter = bookListAdapter
-        viewModel.search()
+        bookViewModel.search(accessToken = args.accessToken)
     }
 
     private fun addObserver() {
-        viewModel.bookListViewState.observe(viewLifecycleOwner) { state ->
+        bookViewModel.bookListViewState.observe(viewLifecycleOwner) { state ->
 
             when (state) {
                 is ViewState.Success -> {

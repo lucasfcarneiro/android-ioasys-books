@@ -1,42 +1,28 @@
 package com.lucasfagundes.ioasysbooks.data_remote.datasource
 
 import com.lucasfagundes.ioasysbooks.data.datasource.BooksDataSource
+import com.lucasfagundes.ioasysbooks.data_remote.mappers.todomain
+import com.lucasfagundes.ioasysbooks.data_remote.service.BookService
 import com.lucasfagundes.ioasysbooks.domain.model.Book
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
 
-class BooksDataSourceImpl : BooksDataSource {
+class BooksDataSourceImpl(private val bookService: BookService) : BooksDataSource {
 
-    override fun getBooks(accessToken: String, query: String?): Flow<List<Book>> = flow{
-        val books:List<Book> = listOf(
-            Book(
-                id = 1,
-                title = "asdasdasd"
-            ),
-            Book(
-                id = 2,
-                title = "ertertert"
-            ),
-            Book(
-                id = 3,
-                title = "uiouiouio"
-            ),
-            Book(
-                id = 4,
-                title = "jkljkljkl"
-            ),
-            Book(
-                id = 5,
-                title = "qweqweqwe"
-            )
-        )
+    override fun getBooks(accessToken: String, query: String?): Flow<List<Book>> = flow {
 
-        query?.let {
-            emit(books.filter { book ->
-                book.title.trim().contains(query,true)
-            })
-        }?: run{
-            emit(books)
+        val response = bookService.getBooks(accessToken = "Bearer $accessToken", page = 1)
+
+        if (response.isSuccessful) {
+            response.body()?.data?.let { bookList ->
+                query?.let {
+                    emit(bookList.filter { book ->
+                        book.title?.trim()?.contains(it, true) ?: false
+                    }.todomain())
+                } ?: run {
+                    emit(bookList.todomain())
+                }
+            }
         }
     }
 }

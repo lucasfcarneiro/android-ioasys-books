@@ -78,4 +78,7 @@ dependencies {
 
     //gson
     implementation "com.google.code.gson:gson:$gson_version"
+
+    //coil
+    implementation "io.coil-kt:coil:$coilVersion"
 }

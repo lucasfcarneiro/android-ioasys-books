@@ -56,9 +56,11 @@ class LoginFragment : Fragment() {
             when(state){
                 is ViewState.Success ->{
                     findNavController().navigate(
-                        LoginFragmentDirections.actionLoginFragmentToSearchBooksFragment())
+                        LoginFragmentDirections.actionLoginFragmentToSearchBooksFragment(state.data))
                 }
+
                 is ViewState.Error ->{
+                    binding.errorTextView.text = state.throwable.message
                     binding.progressDialod.visibility = View.GONE
                     binding.errorTextView.visibility = View.VISIBLE
                 }
