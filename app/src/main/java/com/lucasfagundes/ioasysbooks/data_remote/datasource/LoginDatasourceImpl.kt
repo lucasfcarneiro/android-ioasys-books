@@ -22,6 +22,8 @@ class LoginDatasourceImpl(private val authService: AuthService) : LoginDatasourc
             response.body()?.let { loginResponse ->
                 emit(loginResponse.toDomain(accessToken ?: ""))
             }
+        }else{
+            emit(throw Exception("error"))
         }
     }
 }

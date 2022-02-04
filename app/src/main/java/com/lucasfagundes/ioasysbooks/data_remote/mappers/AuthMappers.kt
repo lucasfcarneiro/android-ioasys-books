@@ -4,9 +4,9 @@ import com.lucasfagundes.ioasysbooks.data_remote.model.LoginResponse
 import com.lucasfagundes.ioasysbooks.domain.model.User
 
 fun LoginResponse.toDomain(accessToken :String) = User(
-    name = this.name,
-    birthday = this.birthday,
-    gender = this.gender,
+    name = this.name.orEmpty(),
+    birthday = this.birthday.orEmpty(),
+    gender = this.gender.orEmpty(),
     accessToken = accessToken,
-    id = this.id
+    id = this.id.orEmpty()
 )
