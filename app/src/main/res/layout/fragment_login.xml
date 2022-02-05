@@ -48,7 +48,7 @@
         app:layout_constraintVertical_chainStyle="packed">
 
         <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/mailTextInput"
+            android:id="@+id/emailTextInput"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:background="@drawable/bg_input"

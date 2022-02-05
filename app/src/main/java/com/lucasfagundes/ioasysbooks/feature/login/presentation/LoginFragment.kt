@@ -5,12 +5,15 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import com.lucasfagundes.ioasysbooks.R
+import androidx.core.widget.addTextChangedListener
+import com.lucasfagundes.ioasysbooks.common.utils.ViewState
+import org.koin.androidx.viewmodel.ext.android.viewModel
 import com.lucasfagundes.ioasysbooks.databinding.FragmentLoginBinding
 
 class LoginFragment : Fragment() {
 
     private val binding by lazy { FragmentLoginBinding.inflate(layoutInflater) }
+    private val viewModel: LoginViewModel by viewModel()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -23,18 +26,48 @@ class LoginFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         handleClickListener()
+        clearError()
         addObserver()
     }
 
     private fun handleClickListener() {
-        with(binding){
-            loginButton.setOnClickListener{
+        with(binding) {
+            loginButton.setOnClickListener {
+                viewModel.login(
+                    emailTextInput.text.toString(),
+                    passwordTextInput.text.toString()
+                )
+            }
+        }
+    }
 
+    private fun clearError() {
+        with(binding) {
+            passwordTextInput.addTextChangedListener {
+                errorTextView.visibility = View.GONE
+            }
+            emailTextInput.addTextChangedListener {
+                errorTextView.visibility = View.GONE
             }
         }
     }
 
     private fun addObserver() {
+        viewModel.loginLiveData.observe(viewLifecycleOwner){state ->
+            with(binding) {
+                when (state) {
+                    is ViewState.Loading ->
+                        progressDialog.visibility = View.VISIBLE
+                    is ViewState.Success ->{
 
+                    }
+                    is ViewState.Error ->{
+                        binding.progressDialog.visibility = View.GONE
+                        binding.errorTextView.visibility = View.VISIBLE
+                    }
+                    else -> Unit
+                }
+            }
+        }
     }
 }
