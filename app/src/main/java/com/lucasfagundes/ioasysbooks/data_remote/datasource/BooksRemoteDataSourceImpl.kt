@@ -1,13 +1,13 @@
 package com.lucasfagundes.ioasysbooks.data_remote.datasource
 
-import com.lucasfagundes.ioasysbooks.data.datasource.BooksDataSource
+import com.lucasfagundes.ioasysbooks.data.datasource.remote.BooksRemoteDataSource
 import com.lucasfagundes.ioasysbooks.data_remote.mappers.todomain
 import com.lucasfagundes.ioasysbooks.data_remote.service.BookService
 import com.lucasfagundes.ioasysbooks.domain.model.Book
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
 
-class BooksDataSourceImpl(private val bookService: BookService) : BooksDataSource {
+class BooksRemoteDataSourceImpl(private val bookService: BookService) : BooksRemoteDataSource {
 
     override fun getBooks(accessToken: String, query: String?): Flow<List<Book>> = flow {
 

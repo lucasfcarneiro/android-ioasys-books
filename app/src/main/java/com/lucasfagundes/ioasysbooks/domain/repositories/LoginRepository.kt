@@ -5,6 +5,6 @@ import kotlinx.coroutines.flow.Flow
 
 interface LoginRepository {
 
-    fun login(mail:String,password:String): Flow<User>
+    fun login(email:String,password:String): Flow<User>
 
 }

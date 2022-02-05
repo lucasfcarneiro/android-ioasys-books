@@ -1,10 +1,7 @@
 package com.lucasfagundes.ioasysbooks.base_app
 
 import android.app.Application
-import com.lucasfagundes.ioasysbooks.di.dataModule
-import com.lucasfagundes.ioasysbooks.di.dataRemoteModule
-import com.lucasfagundes.ioasysbooks.di.bookPresentationModule
-import com.lucasfagundes.ioasysbooks.di.loginPresentationModule
+import com.lucasfagundes.ioasysbooks.di.*
 import org.koin.android.ext.koin.androidContext
 import org.koin.core.context.startKoin
 
@@ -18,7 +15,9 @@ class BaseApplication : Application() {
                     bookPresentationModule,
                     loginPresentationModule,
                     dataModule,
-                    dataRemoteModule)
+                    dataRemoteModule,
+                    dataLocalModule
+                )
             ).androidContext(applicationContext)
         }
     }
