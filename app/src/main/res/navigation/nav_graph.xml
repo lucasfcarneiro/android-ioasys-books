@@ -33,9 +33,6 @@
         android:name="com.lucasfagundes.ioasysbooks.feature.book.presentation.SearchBooksFragment"
         android:label="fragment_search_books"
         tools:layout="@layout/fragment_book_list" >
-        <argument
-            android:name="accessToken"
-            app:argType="string" />
     </fragment>
 
 </navigation>

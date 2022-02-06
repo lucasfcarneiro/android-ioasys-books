@@ -10,9 +10,9 @@ import kotlinx.coroutines.flow.flow
 
 class LoginRemoteDataSourceImpl(private val authService: AuthService) : LoginRemoteDataSource {
 
-    override fun login(mail: String, password: String): Flow<User> = flow {
+    override fun login(email: String, password: String): Flow<User> = flow {
 
-        val response = authService.signIn(LoginRequest(mail, password))
+        val response = authService.signIn(LoginRequest(email, password))
         val accessToken = response.headers()["authorization"]
 
         if (response.isSuccessful) {
