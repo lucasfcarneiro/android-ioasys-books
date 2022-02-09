@@ -6,7 +6,7 @@ import androidx.room.PrimaryKey
 @Entity(tableName = "Books")
 data class BookDataLocal(
     @PrimaryKey
-    val id:String? = null,
+    val id:String,
     val title:String? = null,
     val author: String? = null,
     val pages: String? = null,

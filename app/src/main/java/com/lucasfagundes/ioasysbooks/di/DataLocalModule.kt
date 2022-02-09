@@ -14,5 +14,5 @@ val dataLocalModule = module {
 
     single <LoginLocalDataSource> { LoginLocalDataSourceImpl(get())}
 
-    single <BookLocalDataSource> { BookLocalDataSourceImpl(get())}
+    single <BookLocalDataSource> { BookLocalDataSourceImpl(get(), get())}
 }

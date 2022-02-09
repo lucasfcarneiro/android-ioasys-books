@@ -7,8 +7,12 @@ import androidx.lifecycle.viewModelScope
 import com.lucasfagundes.ioasysbooks.domain.model.Book
 import com.lucasfagundes.ioasysbooks.domain.repositories.BooksRepository
 import com.lucasfagundes.ioasysbooks.utils.*
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.Dispatchers.IO
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
+import okhttp3.Dispatcher
 import kotlin.Exception
 
 class BookListViewModel(private val booksRepository: BooksRepository) : ViewModel() {
@@ -23,6 +27,7 @@ class BookListViewModel(private val booksRepository: BooksRepository) : ViewMode
             try {
                 booksRepository.getBooks(input).collect{
                     if(it.isNotEmpty()){
+                        saveBooks(bookList = it)
                         _bookListViewState.postSuccess(it)
                     }else{
                         _bookListViewState.postError(Exception("algo deu errado"))
@@ -30,6 +35,18 @@ class BookListViewModel(private val booksRepository: BooksRepository) : ViewMode
                 }
             }catch (error:Exception){
                 _bookListViewState.postError(error)
+            }
+        }
+    }
+
+    private fun saveBooks(bookList: List<Book>){
+        viewModelScope.launch {
+            try {
+                withContext(Dispatchers.IO) {
+                    booksRepository.saveBooks(bookList = bookList)
+                }
+            }catch (err:Exception){
+                print(err)
             }
         }
     }
