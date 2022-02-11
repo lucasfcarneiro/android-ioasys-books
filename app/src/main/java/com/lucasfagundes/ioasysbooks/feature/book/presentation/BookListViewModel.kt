@@ -25,28 +25,37 @@ class BookListViewModel(private val booksRepository: BooksRepository) : ViewMode
         viewModelScope.launch {
             _bookListViewState.postLoading()
             try {
-                booksRepository.getBooks(input).collect{
-                    if(it.isNotEmpty()){
-                        saveBooks(bookList = it)
-                        _bookListViewState.postSuccess(it)
-                    }else{
-                        _bookListViewState.postError(Exception("algo deu errado"))
+                withContext(Dispatchers.IO) {
+                    booksRepository.getBooks(input).collect { bookList ->
+                        withContext(Dispatchers.Main) {
+                            if (bookList.isNotEmpty()) {
+                                saveBooks(bookList = bookList)
+                                _bookListViewState.postSuccess(bookList)
+                            } else {
+                                _bookListViewState.postError(Exception("algo deu errado"))
+                            }
+                        }
                     }
                 }
-            }catch (error:Exception){
-                _bookListViewState.postError(error)
+                booksRepository.getBooks(input).collect {
+
+                }
+            } catch (error: Exception) {
+                withContext(Dispatchers.Main){
+                    _bookListViewState.postError(error)
+                }
             }
         }
     }
 
-    private fun saveBooks(bookList: List<Book>){
+    private fun saveBooks(bookList: List<Book>) {
         viewModelScope.launch {
             try {
                 withContext(Dispatchers.IO) {
                     booksRepository.saveBooks(bookList = bookList)
                 }
-            }catch (err:Exception){
-                print(err)
+            } catch (err: Exception) {
+                return@launch
             }
         }
     }
