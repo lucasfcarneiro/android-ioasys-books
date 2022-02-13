@@ -20,46 +20,31 @@ import kotlin.Exception
 class BookListViewModel(
     private val getBookListUseCase: GetBookListUseCase,
     private val saveBooksUseCase: SaveBooksUseCase
-    ) : ViewModel() {
+) : ViewModel() {
 
     private val _bookListViewState = MutableLiveData<ViewState<List<Book>>>()
     val bookListViewState = _bookListViewState as LiveData<ViewState<List<Book>>>
 
     fun search(input: String = "") {
-
-        viewModelScope.launch {
-            _bookListViewState.postLoading()
-            try {
-                withContext(IO) {
-                    getBookListUseCase(
-                        params = GetBookListUseCase.Params(
-                            input = input
-                        )
-                    ).collect {bookList ->
-                        saveBooks(bookList = bookList)
-                        _bookListViewState.postSuccess(bookList)
-                    }
-                }
-            } catch (err: Exception) {
-                withContext(Dispatchers.Main){
-                    _bookListViewState.postError(err)
-                }
+        _bookListViewState.postLoading()
+        getBookListUseCase(
+            params = GetBookListUseCase.Params(
+                input = input
+            ),
+            onSuccess = { bookList ->
+                _bookListViewState.postSuccess(bookList)
+            },
+            onError = { error ->
+                _bookListViewState.postError(error)
             }
-        }
+        )
     }
 
     private fun saveBooks(bookList: List<Book>) {
-        viewModelScope.launch {
-            try {
-                withContext(IO) {
-                    saveBooksUseCase(
-                        params = SaveBooksUseCase.Params(
-                            bookList = bookList
-                        ))
-                }
-            } catch (err: Exception) {
-                return@launch
-            }
-        }
+        saveBooksUseCase(
+            params = SaveBooksUseCase.Params(
+                bookList = bookList
+            )
+        )
     }
 }

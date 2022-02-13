@@ -15,26 +15,19 @@ class LoginViewModel(
     val loggerUserViewState = _loggerUserViewState as LiveData<ViewState<String>>
 
     fun login(email: String, password: String) {
-        viewModelScope.launch {
-            _loggerUserViewState.postLoading()
-
-            try {
-                loginUseCase(
-                    params = LoginUseCase.Params(
-                        email = email,
-                        password = password
-                    )
-                ).collect {
-                    if (it.name.isNotEmpty()) {
-                        _loggerUserViewState.postSuccess(it.accessToken)
-                    } else {
-                        _loggerUserViewState.postError(Exception("Algo deu errado"))
-                    }
-                }
-            } catch (error: Exception) {
-                _loggerUserViewState.postError(error)
+        _loggerUserViewState.postLoading()
+        loginUseCase(
+            params = LoginUseCase.Params(
+                email = email,
+                password = password
+            ),
+            onSuccess = {
+                _loggerUserViewState.postSuccess(it.accessToken)
+            },
+            onError = {
+                _loggerUserViewState.postError(it)
             }
-        }
+        )
     }
 
     fun resetViewState() {
