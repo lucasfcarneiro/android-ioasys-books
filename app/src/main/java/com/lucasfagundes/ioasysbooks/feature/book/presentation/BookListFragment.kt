@@ -6,13 +6,12 @@ import android.view.LayoutInflater
 import android.view.View
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import android.view.ViewGroup
-import androidx.navigation.fragment.navArgs
 import com.lucasfagundes.ioasysbooks.utils.ViewState
 import com.lucasfagundes.ioasysbooks.databinding.FragmentBookListBinding
 import com.lucasfagundes.ioasysbooks.feature.book.adapter.BookListAdapter
 import com.lucasfagundes.ioasysbooks.domain.model.Book
 import com.lucasfagundes.ioasysbooks.feature.book.adapter.BookClickListener
-import com.lucasfagundes.ioasysbooks.utils.EmptyBookListException
+import com.lucasfagundes.ioasysbooks.domain.exception.EmptyBookListException
 
 class SearchBooksFragment : Fragment(), BookClickListener {
 
