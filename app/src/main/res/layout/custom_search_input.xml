@@ -20,6 +20,6 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         tools:ignore="HardcodedText"
-        tools:text="Pesquisar" />
+        tools:text="@string/search" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

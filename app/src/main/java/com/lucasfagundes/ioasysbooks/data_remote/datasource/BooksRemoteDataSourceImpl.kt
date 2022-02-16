@@ -9,13 +9,17 @@ import kotlinx.coroutines.flow.flow
 
 class BooksRemoteDataSourceImpl(private val bookService: BookService) : BooksRemoteDataSource {
 
-    override fun getBooks(accessToken: String, query: String?): Flow<List<Book>> = flow {
+    override fun getBooks(accessToken: String, bookTitle: String?): Flow<List<Book>> = flow {
 
-        val response = bookService.getBooks(accessToken = "Bearer $accessToken", page = 1)
+        val response = bookService.getBooks(
+                accessToken = "Bearer $accessToken",
+                page = 1,
+                title = bookTitle
+        )
 
         if (response.isSuccessful) {
             response.body()?.data?.let { bookList ->
-                query?.let {
+                bookTitle?.let {
                     emit(bookList.filter { book ->
                         book.title?.trim()?.contains(it, true) ?: false
                     }.todomain())

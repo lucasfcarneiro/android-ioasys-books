@@ -18,4 +18,5 @@
     <string name="isbn_13">ISBN-13</string>
     <string name="review_from_publisher">RESENHA DA EDITORA</string>
     <string name="no_books_found">Não encontramos nenhum livro com esses termos</string>
+    <string name="close">Fechar</string>
 </resources>

@@ -11,13 +11,11 @@ import com.lucasfagundes.ioasysbooks.databinding.FragmentBookListBinding
 import com.lucasfagundes.ioasysbooks.feature.book.adapter.BookListAdapter
 import com.lucasfagundes.ioasysbooks.domain.model.Book
 import com.lucasfagundes.ioasysbooks.feature.book.adapter.BookClickListener
-import com.lucasfagundes.ioasysbooks.domain.exception.EmptyBookListException
 
 class SearchBooksFragment : Fragment(), BookClickListener {
 
     private var _binding: FragmentBookListBinding? = null
     private val binding: FragmentBookListBinding get() = _binding!!
-    private lateinit var bookListAdapter: BookListAdapter
 
     private val bookViewModel: BookListViewModel by viewModel()
 
@@ -31,21 +29,14 @@ class SearchBooksFragment : Fragment(), BookClickListener {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        setBookListData()
         searchListener()
         addObserver()
     }
 
     private fun searchListener() {
         binding.searchCustomView.textChangeListener = { input ->
-            bookViewModel.search(input)
+            bookViewModel.getBooks(input)
         }
-    }
-
-    private fun setBookListData() {
-        bookListAdapter = BookListAdapter(this)
-        binding.booksListRecyclerView.adapter = bookListAdapter
-        bookViewModel.search()
     }
 
     private fun addObserver() {
@@ -53,17 +44,11 @@ class SearchBooksFragment : Fragment(), BookClickListener {
 
             when (state) {
                 is ViewState.Success -> {
-                    showEmptyListError(false)
+                    val bookListAdapter = BookListAdapter(this)
+                    binding.booksListRecyclerView.adapter = bookListAdapter
                     bookListAdapter.submitList(state.data)
                 }
-                is ViewState.Error -> {
-                    when (state.throwable) {
-                        is EmptyBookListException -> {
-                            bookListAdapter.submitList(listOf())
-                            showEmptyListError(true)
-                        }
-                    }
-                }
+                is ViewState.Error -> Unit
                 else -> Unit
             }
         }

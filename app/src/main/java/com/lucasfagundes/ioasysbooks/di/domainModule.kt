@@ -1,6 +1,6 @@
 package com.lucasfagundes.ioasysbooks.di
 
-import com.lucasfagundes.ioasysbooks.domain.use_case.GetBookListUseCase
+import com.lucasfagundes.ioasysbooks.domain.use_case.GetBooksUseCase
 import com.lucasfagundes.ioasysbooks.domain.use_case.LoginUseCase
 import com.lucasfagundes.ioasysbooks.domain.use_case.SaveBooksUseCase
 import kotlinx.coroutines.CoroutineScope
@@ -13,5 +13,5 @@ val domainModule = module {
 
     factory { LoginUseCase(get(),get()) }
     factory { SaveBooksUseCase(get(),get()) }
-    factory { GetBookListUseCase(get(),get()) }
+    factory { GetBooksUseCase(get(),get()) }
 }

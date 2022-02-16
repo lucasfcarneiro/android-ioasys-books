@@ -7,6 +7,6 @@ interface BookLocalDataSource {
 
     fun getAccessToken(): Flow<String>
     fun saveBooks(bookList:List<Book>)
-    fun getBooks(query:String?):Flow<List<Book>>
+    fun getBooks(bookTitle:String?):Flow<List<Book>>
 
 }

@@ -6,19 +6,16 @@ import com.lucasfagundes.ioasysbooks.domain.use_case.utils.UseCase
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.flow.Flow
 
-class GetBookListUseCase(
+class GetBooksUseCase(
     private val booksRepository: BooksRepository,
     scope: CoroutineScope
-    )
-    :UseCase<GetBookListUseCase.Params,List<Book>>(scope = scope) {
+) : UseCase<GetBooksUseCase.Params, List<Book>>(scope = scope) {
 
     override fun run(params: Params?): Flow<List<Book>> = booksRepository.getBooks(
-        query = params?.input
+        bookTitle = params?.bookTitle
     )
 
     data class Params(
-        val input: String
+        val bookTitle: String? = null
     )
-
-
 }
