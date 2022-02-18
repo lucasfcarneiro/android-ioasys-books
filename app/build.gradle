@@ -72,20 +72,23 @@ dependencies {
     //Retrofit
     implementation "com.squareup.retrofit2:retrofit:$retrofit_version"
     implementation "com.squareup.retrofit2:converter-gson:$retrofit_version"
-    implementation "com.jakewharton.retrofit:retrofit2-kotlin-coroutines-adapter:$retrofitCoroutineVersion"
+    implementation "com.jakewharton.retrofit:retrofit2-kotlin-coroutines-adapter:$retrofit_coroutine_version"
 
     //okhttpVersion
-    implementation "com.squareup.okhttp3:okhttp:$okhttpVersion"
+    implementation "com.squareup.okhttp3:okhttp:$okhttp_version"
 
     //gson
     implementation "com.google.code.gson:gson:$gson_version"
 
     //coil
-    implementation "io.coil-kt:coil:$coilVersion"
+    implementation "io.coil-kt:coil:$coil_version"
 
     //room
     implementation "androidx.room:room-runtime:$room_version"
     kapt "androidx.room:room-compiler:$room_version"
     implementation "androidx.room:room-ktx:$room_version"
+
+    //splashscreen
+    implementation "androidx.core:core-splashscreen:$splash_screen_version"
 
 }
