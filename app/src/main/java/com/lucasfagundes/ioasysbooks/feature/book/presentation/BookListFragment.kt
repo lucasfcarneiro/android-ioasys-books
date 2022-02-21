@@ -4,9 +4,11 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.RecyclerView
 import com.lucasfagundes.ioasysbooks.databinding.FragmentBookListBinding
+import com.lucasfagundes.ioasysbooks.domain.exception.EmptyBookListException
 import com.lucasfagundes.ioasysbooks.domain.model.Book
 import com.lucasfagundes.ioasysbooks.feature.book.adapter.BookClickListener
 import com.lucasfagundes.ioasysbooks.feature.book.adapter.BookListAdapter
@@ -61,13 +63,18 @@ class SearchBooksFragment : Fragment(), BookClickListener {
             when (state) {
                 is ViewState.Success ->
                     handleSuccess(state.data)
-                is ViewState.Error -> Unit
+                is ViewState.Error ->
+                    handleError(state.throwable)
                 else -> Unit
             }
         }
     }
 
     private fun handleSuccess(data: Pair<List<Book>, Boolean>) {
+        with(binding){
+            errorTextView.isVisible = false
+            booksListRecyclerView.isVisible = true
+        }
         adapter.apply {
             if (data.second) {
                 viewModel.saveBooks(currentList + data.first)
@@ -79,8 +86,13 @@ class SearchBooksFragment : Fragment(), BookClickListener {
         }
     }
 
-    private fun showEmptyListError(hasError: Boolean) {
-        binding.errorTextView.visibility = if (hasError) View.VISIBLE else View.GONE
+    private fun handleError(throwable: Throwable) {
+        if (throwable is EmptyBookListException){
+            with(binding){
+                errorTextView.isVisible = true
+                booksListRecyclerView.isVisible = false
+            }
+        }
     }
 
     override fun onBookClickListener(book: Book) {

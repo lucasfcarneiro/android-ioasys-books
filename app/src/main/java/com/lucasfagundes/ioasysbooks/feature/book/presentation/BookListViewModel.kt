@@ -23,7 +23,7 @@ class BookListViewModel(
 
     fun getBooks(bookTitle: String? = null, isNextPage: Boolean = false) {
 
-        if (isNextPage) {
+        if (isNextPage && bookTitle == null) {
             page += 1
         }
 
