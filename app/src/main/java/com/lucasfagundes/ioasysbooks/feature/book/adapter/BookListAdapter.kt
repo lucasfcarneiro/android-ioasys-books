@@ -9,9 +9,10 @@ import coil.load
 import com.lucasfagundes.ioasysbooks.R
 import com.lucasfagundes.ioasysbooks.databinding.ItemBookBinding
 import com.lucasfagundes.ioasysbooks.domain.model.Book
+import com.lucasfagundes.ioasysbooks.utils.DefaultDiffCallback
 
 class BookListAdapter(private val onBookClickListener: BookClickListener) :
-    ListAdapter<Book, BookListAdapter.BookListViewHolder>(DIFF_CALLBACK) {
+    ListAdapter<Book, BookListAdapter.BookListViewHolder>(DefaultDiffCallback<Book>()) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): BookListViewHolder {
         return BookListViewHolder.create(parent, onBookClickListener)
@@ -19,16 +20,6 @@ class BookListAdapter(private val onBookClickListener: BookClickListener) :
 
     override fun onBindViewHolder(holder: BookListViewHolder, position: Int) {
         holder.bind(getItem(position))
-    }
-
-    companion object {
-        private val DIFF_CALLBACK = object : DiffUtil.ItemCallback<Book>() {
-            override fun areItemsTheSame(oldItem: Book, newItem: Book): Boolean =
-                oldItem.id == newItem.id
-
-            override fun areContentsTheSame(oldItem: Book, newItem: Book): Boolean =
-                oldItem == newItem
-        }
     }
 
     class BookListViewHolder(

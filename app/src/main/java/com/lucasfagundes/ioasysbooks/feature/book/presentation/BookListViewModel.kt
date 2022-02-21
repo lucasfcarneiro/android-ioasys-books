@@ -13,30 +13,36 @@ class BookListViewModel(
     private val saveBooksUseCase: SaveBooksUseCase
 ) : ViewModel() {
 
-    private val _bookListViewState = MutableLiveData<ViewState<List<Book>>>()
-    val bookListViewState = _bookListViewState as LiveData<ViewState<List<Book>>>
+    private val bookListViewState = MutableLiveData<ViewState<Pair<List<Book>, Boolean>>>()
+    val bookListLiveData = bookListViewState as LiveData<ViewState<Pair<List<Book>, Boolean>>>
+    private var page: Int = 1
 
     init {
         getBooks()
     }
 
-    fun getBooks(bookTitle: String? = null) {
-        _bookListViewState.postLoading()
+    fun getBooks(bookTitle: String? = null, isNextPage: Boolean = false) {
+
+        if (isNextPage) {
+            page += 1
+        }
+
+        bookListViewState.postLoading()
         getBooksUseCase(
             params = GetBooksUseCase.Params(
-                bookTitle = bookTitle
+                bookTitle = bookTitle,
+                page = page
             ),
             onSuccess = { bookList ->
-                saveBooks(bookList = bookList)
-                _bookListViewState.postSuccess(bookList)
+                bookListViewState.postSuccess(Pair(bookList, isNextPage))
             },
             onError = { error ->
-                _bookListViewState.postError(error)
+                bookListViewState.postError(error)
             }
         )
     }
 
-    private fun saveBooks(bookList: List<Book>) {
+    fun saveBooks(bookList: List<Book>) {
         saveBooksUseCase(
             params = SaveBooksUseCase.Params(
                 bookList = bookList
