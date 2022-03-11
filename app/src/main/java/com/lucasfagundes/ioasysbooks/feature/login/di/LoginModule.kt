@@ -17,16 +17,16 @@ val loginModule = module {
         WebServiceFactory.createWebService(
             okHttpClient = get(),
             url = ApiConstants.BASE_URL
-        )as LoginService
+        ) as LoginService
     }
 
     factory<LoginRepository> {
         LoginRepositoryImpl(
-            remoteDataSource = LoginRemoteDataSource()
+            remoteDataSource = LoginRemoteDataSource(service = get())
         )
     }
 
     viewModel {
-        LoginViewModel(loginUseCase = LoginUseCase(get()))
+        LoginViewModel(loginUseCase = LoginUseCase(repository = get()))
     }
 }

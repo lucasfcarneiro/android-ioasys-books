@@ -53,17 +53,18 @@ class LoginFragment : Fragment() {
     }
 
     private fun addObserver() {
-        viewModel.loginLiveData.observe(viewLifecycleOwner){state ->
+        viewModel.loginLiveData.observe(viewLifecycleOwner) { state ->
             with(binding) {
                 when (state) {
                     is ViewState.Loading ->
                         progressDialog.visibility = View.VISIBLE
-                    is ViewState.Success ->{
+                    is ViewState.Success -> {
 
                     }
-                    is ViewState.Error ->{
-                        binding.progressDialog.visibility = View.GONE
-                        binding.errorTextView.visibility = View.VISIBLE
+                    is ViewState.Error -> {
+                        progressDialog.visibility = View.GONE
+                        errorTextView.visibility = View.VISIBLE
+                        errorTextView.text = state.throwable.message
                     }
                     else -> Unit
                 }

@@ -2,7 +2,6 @@ package com.lucasfagundes.ioasysbooks.common.extensions
 
 import androidx.lifecycle.MutableLiveData
 import com.lucasfagundes.ioasysbooks.common.utils.ViewState
-import kotlin.Exception
 
 fun <T> MutableLiveData<ViewState<T>>.postSuccess(data: T) {
     postValue(ViewState.Success(data))

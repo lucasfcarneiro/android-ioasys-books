@@ -1,6 +1,5 @@
 package com.lucasfagundes.ioasysbooks.common.network
 
-import android.os.Debug
 import okhttp3.Dispatcher
 import okhttp3.OkHttpClient
 import retrofit2.Retrofit
@@ -19,7 +18,7 @@ object WebServiceFactory {
             .build().create()
     }
 
-    fun providerOkhttpClient(isDebug: Boolean): OkHttpClient =
+    fun  providerOkhttpClient(isDebug: Boolean): OkHttpClient =
         OkHttpClient.Builder()
             .dispatcher(Dispatcher().apply {
                 maxRequests = 1
