@@ -79,4 +79,7 @@ dependencies {
 
     //coil
     implementation "io.coil-kt:coil:$coil_version"
+
+    //splash
+    implementation 'androidx.core:core-splashscreen:1.0.0-beta01'
 }

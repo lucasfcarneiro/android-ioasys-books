@@ -3,11 +3,15 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/lukas/Desktop/Ioasys BootCamp/Projetos/android-ioasys-books/app/src/main/res/drawable-mdpi/ic_launcher_foreground.xml" value="0.2155" />
+        <entry key="..\:/Users/lukas/Desktop/Ioasys BootCamp/Projetos/android-ioasys-books/app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.2155" />
         <entry key="..\:/Users/lukas/Desktop/Ioasys BootCamp/Projetos/android-ioasys-books/app/src/main/res/drawable/bg_input.xml" value="0.1565" />
         <entry key="..\:/Users/lukas/Desktop/Ioasys BootCamp/Projetos/android-ioasys-books/app/src/main/res/drawable/ic_background_login.xml" value="0.207" />
+        <entry key="..\:/Users/lukas/Desktop/Ioasys BootCamp/Projetos/android-ioasys-books/app/src/main/res/drawable/ic_launcher_foreground.xml" value="0.2155" />
         <entry key="..\:/Users/lukas/Desktop/Ioasys BootCamp/Projetos/android-ioasys-books/app/src/main/res/layout/activity_main.xml" value="0.34074074074074073" />
         <entry key="..\:/Users/lukas/Desktop/Ioasys BootCamp/Projetos/android-ioasys-books/app/src/main/res/layout/fragment_login.xml" value="0.3274336283185841" />
         <entry key="..\:/Users/lukas/Desktop/Ioasys BootCamp/Projetos/android-ioasys-books/app/src/main/res/layout/fragment_splash.xml" value="0.34074074074074073" />
+        <entry key="..\:/Users/lukas/Desktop/Ioasys BootCamp/Projetos/android-ioasys-books/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" value="0.1025" />
       </map>
     </option>
   </component>

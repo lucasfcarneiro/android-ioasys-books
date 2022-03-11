@@ -3,21 +3,11 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph"
-    app:startDestination="@id/splashFragment">
+    app:startDestination="@id/loginFragment">
 
-    <fragment
-        android:id="@+id/splashFragment"
-        android:name="com.lucasfagundes.ioasysbooks.base_app.SplashFragment"
-        android:label="fragment_splash"
-        tools:layout="@layout/fragment_splash" >
-        <action
-            android:id="@+id/action_splashFragment_to_loginFragment"
-            app:destination="@id/loginFragment" />
-    </fragment>
     <fragment
         android:id="@+id/loginFragment"
         android:name="com.lucasfagundes.ioasysbooks.feature.login.presentation.LoginFragment"
         android:label="fragment_login"
         tools:layout="@layout/fragment_login" />
-
 </navigation>
