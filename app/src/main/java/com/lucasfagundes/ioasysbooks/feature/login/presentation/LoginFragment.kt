@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.core.widget.addTextChangedListener
+import androidx.navigation.fragment.findNavController
 import com.lucasfagundes.ioasysbooks.common.utils.ViewState
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import com.lucasfagundes.ioasysbooks.databinding.FragmentLoginBinding
@@ -59,7 +60,8 @@ class LoginFragment : Fragment() {
                     is ViewState.Loading ->
                         progressDialog.visibility = View.VISIBLE
                     is ViewState.Success -> {
-
+                        findNavController().navigate(
+                            LoginFragmentDirections.actionLoginFragmentToHomeFragment())
                     }
                     is ViewState.Error -> {
                         progressDialog.visibility = View.GONE
